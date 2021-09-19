@@ -1,4 +1,4 @@
-#WP Inquirist 🕵️
+# WP Inquirist 🕵️
 
 **Allow your theme to require plugins!** This plugin wraps the PHP library [TGMPA](http://tgmpluginactivation.com/) inside a WordPress plugin. View the [WP Inquirist](https://github.com/scottcarver/wp-inquirist) Github Repository for the source code.
 
