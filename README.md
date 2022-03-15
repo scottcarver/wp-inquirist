@@ -1,6 +1,6 @@
 # WP Inquirist 🕵️
 
-**Allow your theme to ask for plugins!** This plugin `requires` the  [TGMPA v2.6.1](http://tgmpluginactivation.com/) library so you can get straight to the task of requiring plugins within your theme (or plugin!). View the [WP Inquirist](https://github.com/scottcarver/wp-inquirist) Github repository (this) for the source code.
+**Allow your theme to ask for plugins!** This plugin includes the  [TGMPA v2.6.1](http://tgmpluginactivation.com/) library so you can get straight to the task of requiring plugins within your theme (or plugin).
 
 <!-- ![Tux, the Linux mascot](https://place-hold.it/1280x720) -->
 
@@ -11,13 +11,13 @@ TGMPA is very useful for requiring plugins but setting it up inside a theme and 
 
 2. Inside your theme call the `tgmpa_register` action with a valid callback† function. See `example.php` for an example. Place this inside functions.php or even better, a seperate file for safekeeping.
 
-**FOOTNOTES:**
-**† - the callback function name** in the `example.php` file is called `wpinquirist_registerrequiredplugins` but is arbitrary - the important thing is that the function callback matches the name used in the tgmpa_register action.
+<!-- **FOOTNOTES:**
+**† - the callback function name** in the `example.php` file is called `wpinquirist_registerrequiredplugins` but is arbitrary - the important thing is that the function callback matches the name used in the tgmpa_register action. -->
 
 
 ### 👉 How to add Required Plugins to my Theme
 
-1. Copy/paste the contents of the [example.php file](https://github.com/TGMPA/TGM-Plugin-Activation/blob/develop/example.php) into your theme.
+1. Copy/paste the contents of the [example.php file](https://github.com/TGMPA/TGM-Plugin-Activation/blob/develop/example.php) into your theme. Note that the callback function name is arbitrary, it simply needs to match the action.
 
 2. The [WP With Agency](https://github.com/scottcarver/wp-withagency) generator's `theme` command includes [a file](https://github.com/scottcarver/wp-withagency/blob/master/templates/theme/copy/library/function/custom/custom_requiredplugins.php) that is required in the theme's functions.php and it's the same as example.php.
 
@@ -40,7 +40,8 @@ If you have the command-line tool [WP CLI](https://wp-cli.org/) you can quickly 
 ---
 
 ## 🚧 Experimental 🚧
-In the future it may be useful to add a feature to WP Withagency to retrofit old theme. Themes created using `wp withagency` already include a requirement, but some users may not be starting from scratch.
+In the future it may be useful to add a feature to WP Withagency to retrofit old theme. Themes created using `wp withagency` already include a requirement, but some users may not be starting from scratch. 
+This varies slightly from what is included in the theme by default (it's in `/library/function/custom/custom_requiredplugins.php`)
 
 **Example**
 
@@ -49,5 +50,3 @@ In the future it may be useful to add a feature to WP Withagency to retrofit old
 This would include code to match the standard setup:
 1. create custom_requiredplugins.php
 2. require it inside of functions.php
-
-This varies slightly from what is included in the theme by default (it's in `/library/function/custom/custom_requiredplugins.php`)
