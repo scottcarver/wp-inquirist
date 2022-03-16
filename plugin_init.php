@@ -1,18 +1,17 @@
 <?php
    /*
    Plugin Name: WP Inquirist
-   Plugin URI: https://github.com/scottcarver/wp-enrouter
-   description: Wraps TGMPA Class in a plugin making it easier to use.
+   Plugin URI: https://github.com/scottcarver/wp-inquirist
+   description: Wraps TGMPA Class in a plugin making it easier for themes to ask for plugins.
    Version: 0.0.1
-   Author: Various
+   Author: TGMPA
    */
 
+   /********* Require the standard, unmodified TGM plugin activation plugin ************/
+   require_once('TGMPA-TGM-Plugin-Activation-c626d0d/class-tgm-plugin-activation.php');
 
-/********* Require the standard, unmodified TGM plugin activation plugin ************/
-require_once('TGMPA-TGM-Plugin-Activation-c626d0d/class-tgm-plugin-activation.php');
-
-
-/* On it's own this does nothing but reference the library.
-To complete this configuration set your theme to require plugins!. See example.php */
-
+   /* 
+   1) On it's own this does nothing but reference the library.
+   2) To complete configuration see example.php to copy code
+   */
 ?>
