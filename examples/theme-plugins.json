@@ -1,0 +1,60 @@
+{
+    "plugins": [
+        {
+            "name": "WP Enrouter",
+            "external_url": "https://github.com/scottcarver/wp-enrouter",
+            "required": true,
+            "slug": "wp-enrouter",
+            "source": "https://github.com/scottcarver/wp-enrouter/archive/refs/heads/master.zip"
+        },
+        {
+            "name": "Advanced Custom Fields",
+            "required": true,
+            "slug": "advanced-custom-fields"
+        },
+        {
+            "name": "Debug Bar",
+            "required": true,
+            "slug": "debug-bar"
+        },
+        {
+            "name": "Debug Bar",
+            "required": true,
+            "slug": "debug-bar"
+        },
+        {
+            "name": "Debug Bar Rewrite Rules",
+            "required": true,
+            "slug": "debug-bar-rewrite-rules"
+        },
+        {
+            "name": "WP Route Manifest",
+            "external_url":"https://github.com/scottcarver/wp-routemanifest",
+            "required": true,
+            "slug": "wp-routemanifest",
+            "source": "https://github.com/scottcarver/wp-routemanifest/archive/refs/heads/master.zip"         
+        },
+        {
+            "name": "WP Migrate DB",
+            "required": true,
+            "slug": "wp-migrate-db"
+        },
+        {
+            "name": "Action Scheduler",
+            "required": false,
+            "slug": "action-scheduler"
+        },
+        {
+            "name": "WP Pusher",
+            "external_url":"https://wppusher.com/",
+            "required": false,
+            "slug": "wppusher"
+        },
+        {
+            "name": "Yoast Duplicate Post",
+            "external_url":"https://wordpress.org/plugins/duplicate-post/",
+            "required": false,
+            "slug": "duplicate-post"
+        }
+    ]
+}
