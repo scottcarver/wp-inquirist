@@ -1,90 +1,64 @@
 <?php
+/**
+ * This file represents an example of the code that themes would use to register
+ * the required plugins.
+ *
+ * It is expected that theme authors would copy and paste this code into their
+ * functions.php file, and amend to suit.
+ *
+ * @see http://tgmpluginactivation.com/configuration/ for detailed documentation.
+ *
+ * @package    TGM-Plugin-Activation
+ * @subpackage Example
+ * @version    2.6.1
+ * @author     Thomas Griffin, Gary Jones, Juliette Reinders Folmer
+ * @copyright  Copyright (c) 2011, Thomas Griffin
+ * @license    http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
+ * @link       https://github.com/TGMPA/TGM-Plugin-Activation
+ */
 
-/* Check for TGMPA plugin */
-if(class_exists('TGM_Plugin_Activation')){
-	add_action( 'tgmpa_register', 'wpinquirist_registerrequiredplugins' );
-} else {
-	add_action( 'admin_notices', 'wpinquirist_registerrequiredplugins_warning' );
-}
+/**
+ * Include the TGM_Plugin_Activation class.
+ *
+ * Depending on your implementation, you may want to change the include call:
+ *
+ * Parent Theme:
+ * require_once get_template_directory() . '/path/to/class-tgm-plugin-activation.php';
+ *
+ * Child Theme:
+ * require_once get_stylesheet_directory() . '/path/to/class-tgm-plugin-activation.php';
+ *
+ * Plugin:
+ * require_once dirname( __FILE__ ) . '/path/to/class-tgm-plugin-activation.php';
+ */
+require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 
-/* Add a fallback admin warning */
-function wpinquirist_registerrequiredplugins_warning() {
-	$classname = 'https://github.com/scottcarver/wp-inquirist';
-	$class = 'notice notice-warning is-dismissible';
-	$message = __( 'The current theme would like to install some plugins. First add the WP Inquirist plugin ' . $classname . ' - Alternatively, you can also disable `custom_requiredplugins.php` in your theme (see functions.php) to hide this message.', 'sample-text-domain' );
-	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
-}
+add_action( 'tgmpa_register', 'my_theme_register_required_plugins' );
 
-/* This is a callback used in the TGMPA plugin. If you have the wp-inquirist plugin installed (which boots TGMPA) your WP install will prompt you for plugins when your theme is activated! */
-function wpinquirist_registerrequiredplugins() {
+/**
+ * Register the required plugins for this theme.
+ *
+ * In this example, we register five plugins:
+ * - one included with the TGMPA library
+ * - two from an external source, one from an arbitrary source, one from a GitHub repository
+ * - two from the .org repo, where one demonstrates the use of the `is_callable` argument
+ *
+ * The variables passed to the `tgmpa()` function should be:
+ * - an array of plugin arrays;
+ * - optionally a configuration array.
+ * If you are not changing anything in the configuration array, you can remove the array and remove the
+ * variable from the function call: `tgmpa( $plugins );`.
+ * In that case, the TGMPA default settings will be used.
+ *
+ * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
+ */
+function my_theme_register_required_plugins() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.
 	 * If the source is NOT from the .org repo, then source is also required.
 	 */
 	$plugins = array(
-		// This is an example of how to include a plugin from the WordPress Plugin Repository.
-		array(
-			'name'      => 'WP Enrouter',
-			'slug'      => 'wp-enrouter',
-			'source'	=> 'https://github.com/scottcarver/wp-enrouter/archive/refs/heads/master.zip',
-			'required'  => true,
-			'external_url' 	=> 'https://github.com/scottcarver/wp-enrouter',
-		),
-		// This is an example of how to include a plugin from the WordPress Plugin Repository.
-		array(
-			'name'      => 'Advanced Custom Fields',
-			'slug'      => 'advanced-custom-fields',
-			'required'  => true,
-		),
-		// This is an example of how to include a plugin from the WordPress Plugin Repository.
-		array(
-			'name'      => 'Debug Bar',
-			'slug'      => 'debug-bar',
-			'required'  => true,
-		),
-		// Rewrite Rules
-		array(
-			'name'      => 'Debug Bar Rewrite Rules',
-			'slug'      => 'debug-bar-rewrite-rules',
-			'external_url' 	=> 'https://github.com/scottcarver/wp-enrouter',
-			'required'  => true,
-		),
-		// Route Manifest
-		array(
-			'name'      => 'WP Route Manifest',
-			'slug'      => 'wp-routemanifest',
-			'required'  => true,
-		),
-		// This is an example of how to include a plugin from the WordPress Plugin Repository.
-		array(
-			'name'      => 'WP Migrate DB',
-			'slug'      => 'wp-migrate-db',
-			'required'  => true,
-		),
-		// This is an example of how to include a plugin from the WordPress Plugin Repository.
-		array(
-			'name'      => 'Action Scheduler',
-			'slug'      => 'action-scheduler',
-			'required'  => false,
-		),
-		// WP Pusher
-		array(
-			'name'      => 'WP Pusher',
-			'slug'      => 'wppusher',
-			'external_url' 	=> 'https://wppusher.com/',
-			'required'  => false,
-		),
-		// WP Pusher
-		array(
-			'name'      => 'Yoast Duplicate Post',
-			'slug'      => 'duplicate-post',
-			'external_url' 	=> 'https://wordpress.org/plugins/duplicate-post/',
-			'required'  => false,
-		),
-			
 
-		
-		/*
 		// This is an example of how to include a plugin bundled with a theme.
 		array(
 			'name'               => 'TGM Example Plugin', // The plugin name.
@@ -134,7 +108,7 @@ function wpinquirist_registerrequiredplugins() {
 			'slug'        => 'wordpress-seo',
 			'is_callable' => 'wpseo_init',
 		),
-		*/
+
 	);
 
 	/*
@@ -153,8 +127,8 @@ function wpinquirist_registerrequiredplugins() {
 		'parent_slug'  => 'themes.php',            // Parent menu slug.
 		'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
 		'has_notices'  => true,                    // Show admin notices or not.
-		'dismissable'  => false,                    // If false, a user cannot dismiss the nag message.
-		'dismiss_msg'  => 'REQUIRED PLUGINS',                      // If 'dismissable' is false, this message will be output at top of nag.
+		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
 		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
 		'message'      => '',                      // Message to output right before the plugins table.
 
