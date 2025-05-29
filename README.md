@@ -7,7 +7,7 @@
 
 ## 🧐 How Does it Work?
 
-This plugin searches your active theme directory for a JSON file, reads it's "plugins" array and uses it in the the TGMPA registration function!
+This plugin searches your active theme directory for a JSON file, reads it's "plugins" array and uses it in the TGMPA registration function!
 
 1) `theme-plugins.json` (first choice) 
 2) `theme.json` (second choice) 

@@ -3,7 +3,7 @@
    Plugin Name: WP Inquirist
    Plugin URI: https://github.com/scottcarver/wp-inquirist
    description: Require plugins using TGMPA directly from theme.json
-   Version: 0.0.2
+   Version: 0.0.3
    Author: Scott Carver
    Author URI: https://scottcarver.info
    */
@@ -61,7 +61,7 @@
       } elseif(file_exists($filenameTheme) == true) {
          $themejson = file_get_contents($filenameTheme);
       }
-
+      // Return valid data
       if($themejson){
          return json_decode($themejson,true);
       }
